@@ -1,0 +1,11 @@
+version: "3.9"  # optional since v1.27.0
+
+services:
+  proxy:
+    build: .
+    image: bastion_port_foward:$name
+    command: bash -c 'ssh -i "$key_path" -fN -l $bastion_user -L *:$local_foward_port:$proxy_address:$proxy_port  $bastion_address -v -o StrictHostKeyChecking=no && ./trap.sh'
+    ports:
+      - $local_foward_port:$local_foward_port
+    volumes:
+      - .:/code  
