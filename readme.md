@@ -50,7 +50,7 @@ cp .env.example .env
 
 # change variables in .env
 
-sh ./start_proxy
+sh ./start_proxy.sh
 ```
 
 # Troubleshooting
